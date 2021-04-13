@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import axios from "axios";
 import Results from "./Results";
 import Photos from "./Photos";
+import MeaningResults from "./MeaningResults";
 import "./Dictionary.css";
 
 export default function Dictionary(props){
@@ -26,11 +27,10 @@ export default function Dictionary(props){
         axios.get(apiUrl).then(handleResponse);
 
         let pexelsApiKey = "563492ad6f91700001000001cb7516af9a0f474883d3f83d1431eb4d";
-        let pexelsApiUrl = `https://api.pexels.com/v1/search?query=${keyword}&per_page=8`;
+        let pexelsApiUrl = `https://api.pexels.com/v1/search?query=${keyword}&per_page=6`;
         let headers = {Authorization:`Bearer ${pexelsApiKey}`};
         axios.get(pexelsApiUrl, {headers: headers}).then(handlePexelsResponse);
     }
-
 
     function handleSubmit (event){
         event.preventDefault();
@@ -40,10 +40,12 @@ export default function Dictionary(props){
     function handleKeywordChange (event){
         setKeyword(event.target.value);
     }
+
     function load(){
         setLoaded(true);
         search();
     }
+
     if(loaded){    
         return (
         <div className= "Dictionary">
@@ -55,8 +57,11 @@ export default function Dictionary(props){
                 suggested words: sunset, egg, plant, dog...
             </div>
             </section>
+            <section>
             <Results results= {results}/>
             <Photos photos={photos}/>
+            </section>
+            <MeaningResults results={results}/>
         </div>
     );
   } else {

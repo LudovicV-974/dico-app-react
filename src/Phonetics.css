@@ -15,14 +15,21 @@
   transition: all 150ms ease-in-out;
   background-color: rgba(63, 161, 148, 0.466);
 }
-
-.Phonetic a:hover {
+.Phonetic audio {
   background: rgba(29, 114, 103, 0.904);
   color: white;
+  display: inline-block;
 }
 
 .Phonetic .text {
   opacity: 0.5;
   color: rgba(20, 100, 91, 0.692);
   font-weight: bold;
+}
+.icon {
+  color: rgba(18, 71, 64, 0.76);
+  border: 0;
+}
+.btn :hover {
+  color: rgb(4, 51, 45);
 }
